@@ -1,3 +1,3 @@
-# unit-3-collab-tinder
-
-first update
+# Usage
+- Run `$ npm install`
+- Run `$ npm run serve`
