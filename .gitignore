@@ -1,2 +1,7 @@
 node_modules
+public
+.DS_Store
 .env
+
+package.json
+package-lock.json
