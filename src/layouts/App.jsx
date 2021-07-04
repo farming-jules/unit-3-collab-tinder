@@ -1,9 +1,11 @@
 import React from 'react'
+import './App.css'
 import PropTypes from 'prop-types'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import LayoutsNavbar from '@/layouts/Navbar'
+import SideBar from "@/layouts/SideBar";
 
 import PagesHome from '@/pages/Home'
 
@@ -16,17 +18,29 @@ import PagesProfileEdit from '@/pages/my/ProfileEdit'
 
 import PagesNotFound from '@/pages/NotFound'
 
+
+
 import { getCurrentUser } from '@/actions/my/profile'
 
 class App extends React.Component {
+  state = { open: false };
+
+  toggleMenu = () => {
+    this.setState({ open: !this.state.open });
+    console.log(this.state.open);
+  }
+
   componentDidMount() {
     this.props.getCurrentUser()
   }
 
   render() {
+    const { open } = this.state;
+
     return (
       <Router>
-        <LayoutsNavbar />
+        <LayoutsNavbar toggleMenu={this.toggleMenu}/>
+        <SideBar open={open} />
 
         <Switch>
           <Route exact path="/" component={PagesHome} />

@@ -19,11 +19,11 @@ class LayoutsNavbar extends React.Component {
   }
 
   render() {
-    const { stateCurrentUser: { currentUser } } = this.props
+    const { stateCurrentUser: { currentUser }, toggleMenu } = this.props
 
     return (
       <Navbar id="layouts-navbar" bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <Navbar.Brand as={NavLink} to="/" href="#">Tinder</Navbar.Brand>
+        <Navbar.Brand onClick={toggleMenu} as={NavLink} to="/" href="#">Tinder</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
@@ -48,7 +48,8 @@ class LayoutsNavbar extends React.Component {
 
 LayoutsNavbar.propTypes = {
   stateCurrentUser: PropTypes.shape().isRequired,
-  authLogout: PropTypes.func.isRequired
+  authLogout: PropTypes.func.isRequired,
+  toggleMenu: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
