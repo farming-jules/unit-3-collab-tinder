@@ -37,16 +37,16 @@ npx sequelize-cli db:create
 ----add to package.json------- (remember the ,)
 "gen-models": "sequelize-auto -o './models/schema' -d lab_restful_api_development -h localhost -p 5432 -e postgres --cf l --sg true"
 //then generate models
-npx sequelize-cli model:generate --name Wishlist --attributes title:STRING,description:String
-npx sequelize-cli model:generate --name WishlistItem --attributes name:STRING,importance:String,received:Boolean
+npx sequelize-cli model:generate --name User --attributes userId:INTEGER,email:STRING,passwordHash:STRING,firstName:STRING,dateOfBirth:STRING,gender:STRING,sexualOrientation:STRING,passion:STRING,lookingFor:STRING,location:STRING,Bio:TEXT
+npx sequelize-cli model:generate --name UserImage --attributes image:STRING
 
-npx sequelize-cli model:generate --name User --attributes email:STRING,passwordHash:STRING
-npx sequelize-cli model:generate --name AuctionItem --attributes name:STRING,description:STRING,price:INTEGER
+npx sequelize-cli model:generate --name Like --attributes ownerId:INTEGER,targetId:INTEGER,like:BOOLEAN
+npx sequelize-cli model:generate --name AuthenticityToken --attributes token:STRING
 
 
 //in migration file
 content: {
-  allowNull: false, // Add this line 
+  allowNull: false, // Add this line
   type: Sequelize.STRING
 }
 
@@ -82,6 +82,7 @@ module.exports = {
   }
 };
 
+//below gen schema
 npx sequelize-cli db:migrate && npm run gen-models
 
 // routes/file.js
@@ -98,7 +99,7 @@ able to go to localhost:3000
 //Controller Level Validation setup:
 npm install express-validator jsdom jquery lodash --save
 Create folder services
-Create file services/validation-query.js and 
+Create file services/validation-query.js and
 const jsdom = require("jsdom")
 const jQuery = require("jquery")
 const _ = require("lodash")
@@ -123,6 +124,7 @@ exports.decodeArrayToObject = function(errors) {
 In routes/files.js
 const { body, validationResult } = require('express-validator')
 const { encodeArray, decodeArrayToObject } = require('../services/validation-query')
+const { like } = require('sequelize/types/lib/operators')
 const { //Tweet //} = require('../models')
 const { Router } = require('express')
 const router = Router()
