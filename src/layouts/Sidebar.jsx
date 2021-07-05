@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { DropdownButton, MenuItem } from "react-bootstrap";
 
@@ -12,7 +13,7 @@ class SideBar extends React.Component {
     return (
       <nav id="sidebar" className={active ? "active" : null}>
         <div class="sidebar-header">
-          <h3>Bootstrap Sidebar</h3>
+          <h3>Bootstrap Sidebarddd</h3>
         </div>
 
         <ul class="list-unstyled components">
