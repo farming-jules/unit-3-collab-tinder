@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import Loading from '@/components/Loading'
+import ViewCard from '@/layouts/ViewCard'
 
 class PagesProfileShow extends React.Component {
   constructor(props) {
@@ -29,6 +30,9 @@ class PagesProfileShow extends React.Component {
     return (
       <div id="pages-todos-index" className="container text-center my-3">
         <h1 className="mb-3">Profile Show Page</h1>
+        <div className="d-flex justify-content-center">
+          <ViewCard />
+        </div>
       </div>
     )
   }

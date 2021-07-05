@@ -23,7 +23,7 @@ class LayoutsNavbar extends React.Component {
 
     return (
       <Navbar id="layouts-navbar" bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <Navbar.Brand onClick={toggleMenu} as={NavLink} to="/" href="#">Tinder</Navbar.Brand>
+        <Navbar.Brand onClick={toggleMenu}>Tinder</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
