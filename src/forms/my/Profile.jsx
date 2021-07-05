@@ -17,14 +17,14 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
     </div>
 
     <div className="form-group">
-      <label htmlFor="dob">Date Of Birth</label>
+      <label htmlFor="dateOfBirth">Date Of Birth</label>
       <Field
-        id="dob"
-        className={`form-control ${(errors.dob && touched.dob ? ' is-invalid' : '')}`}
-        name="dob"
-        type="dob"
+        id="dateOfBirth"
+        className={`form-control ${(errors.dateOfBirth && touched.dateOfBirth ? ' is-invalid' : '')}`}
+        name="dateOfBirth"
+        type="dateOfBirth"
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="dob" />
+      <ErrorMessage component="div" className="invalid-feedback" name="dateOfBirth" />
     </div>
 
     <div className="form-group">
@@ -115,7 +115,7 @@ RenderForm.propTypes = {
 
 const loginSchema = yup.object().shape({
   firstName: yup.string().required('Required'),
-  dob: yup.string().required('Required'),
+  dateOfBirth: yup.string().required('Required'),
   email: yup.string().email().required('Required'),
   gender: yup.string().required('Required'),
   sexualOrientation: yup.string().required('Required'),
@@ -129,7 +129,7 @@ const FormsMyProfile = ({ onSubmit }) => (
   <Formik
     initialValues={{
       firstName: '',
-      dob: '',
+      dateOfBirth: '',
       email: '',
       gender: '',
       sexualOrientation: '',
