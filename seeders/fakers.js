@@ -29,12 +29,17 @@ module.exports = {
           }
         ],
         Like: [
-          OwnerId:
-          TargetId:
-          like: Faker.Boolean.boolean()
+          {
+            OwnerId: Faker.Number.number(),
+            TargetId: Faker.Number.number(),
+            like: Faker.Boolean.boolean()
+          }
         ]
       }, {
-        include: User.Products
+        include: {
+          association: User.UserImage,
+          association: User.Like
+        }
       })
     }
   },
